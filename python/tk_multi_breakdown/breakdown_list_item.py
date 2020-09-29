@@ -101,21 +101,24 @@ class BreakdownListItem(browser_widget.ListItem):
         # entity.Shot.image
         # entity.Scene.image
         # entity.Sequence.image
-        if self._sg_data:
 
-            thumb_url = self._sg_data.get("image")
+        # Disabled thumbnail : too slow : donat
+        # if self._sg_data:
 
-            if thumb_url is not None:
-                # input is a dict with a url key
-                # returns a dict with a  thumb_path key
-                ret = self._download_thumbnail({"url": thumb_url})
-                if ret:
-                    output["thumbnail"] = ret.get("thumb_path")
-                else:
-                    output["thumbnail"] = ":/res/no_thumb.png"
-            else:
-                output["thumbnail"] = ":/res/no_thumb.png"
+        #     thumb_url = self._sg_data.get("image")
 
+        #     if thumb_url is not None:
+        #         # input is a dict with a url key
+        #         # returns a dict with a  thumb_path key
+        #         ret = self._download_thumbnail({"url": thumb_url})
+        #         if ret:
+        #             output["thumbnail"] = ret.get("thumb_path")
+        #         else:
+        #             output["thumbnail"] = ":/res/no_thumb.png"
+        #     else:
+        #         output["thumbnail"] = ":/res/no_thumb.png"
+
+        output["thumbnail"] = ":/res/no_thumb.png"
         # first, get the latest available version for this item
         app = sgtk.platform.current_bundle()
         latest_version = app.execute_hook(
